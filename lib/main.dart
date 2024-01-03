@@ -1,3 +1,4 @@
+import 'package:aaaa/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,6 +36,9 @@ class _RootPageState extends State<RootPage> {
           style: TextStyle(color: Colors.white),
         ),
       ),
+
+      body: const HomePage(),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           debugPrint('Floating Action Button');
@@ -42,7 +46,16 @@ class _RootPageState extends State<RootPage> {
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [NavigationRailDestination(icon: Icon(Icons.home), label: Text('label'))],
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+        onTap: (int index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
+        currentIndex: currentPage,
       ),
     );
   }
